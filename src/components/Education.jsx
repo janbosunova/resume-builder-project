@@ -1,58 +1,122 @@
+import { useDispatch } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 import styled from 'styled-components'
 import { createGlobalStyle } from 'styled-components'
+import useInput from '../hooks/Input'
+import { contactAdd } from '../store/contact'
 const Education = () => {
-    const navigate = useNavigate()
+	const navigate = useNavigate()
+	const dispatch = useDispatch()
+	const schoolInput = useInput('')
+	const dateSchoolStart = useInput('')
+	const dateSchoolFinish = useInput('')
+	const universityInput = useInput('')
+	const dateuniversityStart = useInput('')
+	const dateuniversityFinish = useInput('')
+	const descriptionSchool = useInput('')
+	const descriptionUniversity = useInput('')
+
+	const submitChangeHandler = (e)=>{
+      e.preventDefault()
+	  dispatch(
+		  contactAdd({
+			  school:schoolInput.value,
+			  schoolStart:dateSchoolStart.value,
+			  schoolFinish:dateSchoolFinish.value,
+			  university: universityInput.value,
+			  universityStart: dateuniversityStart.value,
+			  universityFinish: dateuniversityFinish.value,
+			  descriptionSchool:descriptionSchool.value,
+			  descriptionUniversity:descriptionUniversity.value
+
+		  })
+	  )
+	  return navigate('skills')
+	}
+
 	return (
 		<>
 			<GlobalStyle />
 			<Title>Education Details</Title>
 
-			<FormBlock>
+			<FormBlock onSubmit={submitChangeHandler}>
 				<FormBlock1>
 					<div>
-						<input placeholder='School*' />
+						<input
+							value={schoolInput.value}
+							onChange={schoolInput.onchange}
+							placeholder='School*'
+						/>
 						<img
 							src='http://cdn.onlinewebfonts.com/svg/img_166278.png'
 							alt=''
 						/>
 					</div>
 					<div className='date'>
-						<input placeholder='start*' />
-                        </div>
-						<div className='date'>
-						<input placeholder='finish*' />
-                        </div>
-					
+						<input
+							value={dateSchoolStart.value}
+							onChange={dateSchoolStart.onchange}
+							type='date'
+							placeholder='start*'
+						/>
+					</div>
+					<div className='date'>
+						<input
+							value={dateSchoolFinish.value}
+							onChange={dateSchoolFinish.onchange}
+							type='date'
+							placeholder='finish*'
+						/>
+					</div>
 
 					<div>
-						<input placeholder='University*' />
-                        <img
+						<input
+							value={universityInput.value}
+							onChange={universityInput.onchange}
+							placeholder='University*'
+						/>
+						<img
 							src='http://cdn.onlinewebfonts.com/svg/img_166278.png'
 							alt=''
 						/>
 					</div>
 					<div className='date_second'>
-						<input placeholder='start*' />
-                       
-
+						<input
+							value={dateuniversityStart.value}
+							onChange={dateuniversityStart.onchange}
+							type='date'
+							placeholder='start*'
+						/>
 					</div>
-                    <div className='date_second'>
-						<input placeholder='finish*' />
-
+					<div className='date_second'>
+						<input
+							value={dateuniversityFinish.value}
+							onChange={dateuniversityFinish.onchange}
+							type='date'
+							placeholder='finish*'
+						/>
 					</div>
-                    <button>Back</button>
+					<button>Back</button>
 				</FormBlock1>
 				<FormBlock2>
 					<div>
-						<textarea placeholder='Description*' />
-                        <img src='https://cdn-icons.flaticon.com/png/512/4059/premium/4059788.png?token=exp=1649896950~hmac=e44b3c1a4e510805c1074bcdc8ae2698'/>
+						<textarea
+							value={ descriptionSchool.value}
+							onChange={ descriptionSchool.onchange}
+							dateUniversityStart
+							placeholder='Description*'
+						/>
+						<img src='https://cdn-icons.flaticon.com/png/512/4059/premium/4059788.png?token=exp=1649896950~hmac=e44b3c1a4e510805c1074bcdc8ae2698' />
 					</div>
 					<div>
-						<textarea placeholder='Description*' />
-                        <img src='https://cdn-icons.flaticon.com/png/512/4059/premium/4059788.png?token=exp=1649896950~hmac=e44b3c1a4e510805c1074bcdc8ae2698'/>
+						<textarea
+							value={descriptionUniversity.value}
+							onChange={descriptionUniversity.onchange}
+							placeholder='Description*'
+						/>
+						<img src='https://cdn-icons.flaticon.com/png/512/4059/premium/4059788.png?token=exp=1649896950~hmac=e44b3c1a4e510805c1074bcdc8ae2698' />
 					</div>
-                    <button onClick={()=>navigate('skills')}>next</button>
+					<button type='submit'>next</button>
 				</FormBlock2>
 			</FormBlock>
 		</>
@@ -69,7 +133,7 @@ const Title = styled.h1`
 	color: rgb(79, 79, 112);
 	font-size: 70px;
 `
-const FormBlock = styled.div`
+const FormBlock = styled.form`
 	display: flex;
 	justify-content: space-around;
 	margin: 0 auto;
@@ -94,10 +158,15 @@ const FormBlock1 = styled.div`
 		font-size: 15px;
 		border: 2px solid #dfe1e6;
 		background-color: #fafbfc;
+		align-items: center;
+		display: flex;
+		justify-content: center;
 	}
 	input {
 		border: none;
 		outline: none;
+		height: 50px;
+		width: 200px;
 	}
 	img {
 		width: 40px;
@@ -107,31 +176,31 @@ const FormBlock1 = styled.div`
 	.date {
 		display: flex;
 		justify-content: center;
-        height: 10px;
+		height: 10px;
 		input {
-			width: 82px;
-            
+			width: 200px;
+			height: 18px;
 		}
-       
 	}
 	.date_second {
 		display: flex;
 		justify-content: center;
-        height: 10px;
+		height: 10px;
 
 		input {
-			width: 82px;
+			width: 200px;
+			height: 18px;
 		}
 	}
-    button {
+	button {
 		width: 100px;
 		height: 40px;
-        background-color: rgb(79, 79, 112);
-        
+		background-color: rgb(79, 79, 112);
+
 		border: 2px solid #dfe1e6;
 		margin: 0 0 1.2em;
 		border-radius: 4px;
-        opacity: 0.9;
+		opacity: 0.9;
 	}
 `
 const FormBlock2 = styled.div`
@@ -155,23 +224,23 @@ const FormBlock2 = styled.div`
 	textarea {
 		border: none;
 		outline: none;
+		height: 130px;
+		width: 200px;
 	}
-    img{
-        width: 60px;
-        height: 60px;
-        margin-left: 80px;
-    }
-    button {
-        width: 100px;
+	img {
+		width: 60px;
+		height: 60px;
+		margin-left: 80px;
+	}
+	button {
+		width: 100px;
 		height: 40px;
-	
-        background-color: rgb(79, 79, 112);
+
+		background-color: rgb(79, 79, 112);
 		border: 2px solid #dfe1e6;
 		margin: 0 0 1.2em;
 		border-radius: 4px;
-        margin-left: 300px;
-        opacity: 0.9;
+		margin-left: 300px;
+		opacity: 0.9;
 	}
-	
-	
 `
