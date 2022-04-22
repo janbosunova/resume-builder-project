@@ -3,7 +3,9 @@ import { useNavigate } from 'react-router-dom'
 import styled from 'styled-components'
 import { createGlobalStyle } from 'styled-components'
 import useInput from '../hooks/Input'
-import { contactAdd } from '../store/contact'
+import { education } from '../store/contact'
+import {MdSchool} from 'react-icons/md'
+import {FaSchool} from 'react-icons/fa'
 const Education = () => {
 	const navigate = useNavigate()
 	const dispatch = useDispatch()
@@ -19,7 +21,7 @@ const Education = () => {
 	const submitChangeHandler = (e)=>{
       e.preventDefault()
 	  dispatch(
-		  contactAdd({
+		  education({
 			  school:schoolInput.value,
 			  schoolStart:dateSchoolStart.value,
 			  schoolFinish:dateSchoolFinish.value,
@@ -47,19 +49,10 @@ const Education = () => {
 							onChange={schoolInput.onchange}
 							placeholder='School*'
 						/>
-						<img
-							src='http://cdn.onlinewebfonts.com/svg/img_166278.png'
-							alt=''
-						/>
+							<FaSchool  fontSize='35px' color='rgb(59, 59, 59)'/>
+						
 					</div>
-					<div className='date'>
-						<input
-							value={dateSchoolStart.value}
-							onChange={dateSchoolStart.onchange}
-							type='date'
-							placeholder='start*'
-						/>
-					</div>
+					
 					<div className='date'>
 						<input
 							value={dateSchoolFinish.value}
@@ -75,19 +68,9 @@ const Education = () => {
 							onChange={universityInput.onchange}
 							placeholder='University*'
 						/>
-						<img
-							src='http://cdn.onlinewebfonts.com/svg/img_166278.png'
-							alt=''
-						/>
+						<MdSchool  fontSize='45px' color='rgb(59, 59, 59)'/>
 					</div>
-					<div className='date_second'>
-						<input
-							value={dateuniversityStart.value}
-							onChange={dateuniversityStart.onchange}
-							type='date'
-							placeholder='start*'
-						/>
-					</div>
+				
 					<div className='date_second'>
 						<input
 							value={dateuniversityFinish.value}
@@ -132,41 +115,34 @@ body{
 const Title = styled.h1`
 	color: rgb(79, 79, 112);
 	font-size: 70px;
+	text-align: center;
 `
 const FormBlock = styled.form`
 	display: flex;
 	justify-content: space-around;
 	margin: 0 auto;
-	margin-top: 80px;
-	width: 800px;
+	width: 1000px;
 	height: 500px;
 	background-color: white;
-	opacity: 0.9;
 `
 const FormBlock1 = styled.div`
-	display: flex;
-	flex-direction: column;
-	margin-top: 60px;
-	margin-right: 100px;
-	width: 200px;
+	margin-top: 30px;
 	div {
 		padding: 10px;
-		width: 250px;
+		width: 350px;
 		height: 35px;
-		margin: 0 0 1.2em;
+		margin: 0 0 3em;
 		border-radius: 4px;
-		font-size: 15px;
-		border: 2px solid #dfe1e6;
-		background-color: #fafbfc;
-		align-items: center;
+		border: 2px solid rgb(45, 45, 45);
 		display: flex;
-		justify-content: center;
+		align-items: center;
 	}
 	input {
 		border: none;
 		outline: none;
-		height: 50px;
-		width: 200px;
+		font-size: 20px;
+		width: 380px;
+		height: 40px;
 	}
 	img {
 		width: 40px;
@@ -196,36 +172,32 @@ const FormBlock1 = styled.div`
 		width: 100px;
 		height: 40px;
 		background-color: rgb(79, 79, 112);
-
 		border: 2px solid #dfe1e6;
 		margin: 0 0 1.2em;
 		border-radius: 4px;
-		opacity: 0.9;
+		color: white;
+		font-size: 18px;
 	}
 `
 const FormBlock2 = styled.div`
-	display: flex;
-	flex-direction: column;
-	width: 200px;
-	margin-top: 60px;
-	margin-right: 200px;
-
+	margin-top: 30px;
 	div {
 		padding: 10px;
-		width: 380px;
-		height: 140px;
-		margin: 0 0 1.2em;
+		width: 350px;
+		height: 120px;
+		margin: 0 0 3em;
 		border-radius: 4px;
-
-		font-size: 15px;
-		border: 2px solid #dfe1e6;
-		background-color: #fafbfc;
+		border: 2px solid rgb(45, 45, 45);
+		display: flex;
+		align-items: center;
 	}
+
 	textarea {
+		font-size: 20px;
 		border: none;
 		outline: none;
-		height: 130px;
-		width: 200px;
+		height: 120px;
+		width: 300px;
 	}
 	img {
 		width: 60px;
@@ -235,12 +207,11 @@ const FormBlock2 = styled.div`
 	button {
 		width: 100px;
 		height: 40px;
-
 		background-color: rgb(79, 79, 112);
 		border: 2px solid #dfe1e6;
 		margin: 0 0 1.2em;
 		border-radius: 4px;
-		margin-left: 300px;
-		opacity: 0.9;
+		color: white;
+		font-size: 18px;
 	}
 `

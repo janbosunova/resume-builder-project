@@ -19,7 +19,7 @@ const SkillsList = () => {
 				    key={skill.id}
 					id={skill.id}
 					title={skill.name}
-					completed={skill.status}
+				
 				/>
 			))}
 		</UL>
@@ -28,16 +28,12 @@ const SkillsList = () => {
 }
 export default SkillsList
 const Container = styled.div `
-    margin: 0 auto;
-	width: 800px;
-	display: flex;
+  	display: flex;
 	justify-content: space-around;
 	margin: 0 auto;
-	margin-top: 80px;
-	
+	width: 800px;
 	height: 100px;
 	background-color: white;
-	opacity: 0.9;
 	
 `
 const UL = styled.ul`

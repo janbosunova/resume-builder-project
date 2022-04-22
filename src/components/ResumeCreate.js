@@ -1,10 +1,14 @@
-import { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 import styled from 'styled-components'
 import { createGlobalStyle } from 'styled-components'
 import useInput from '../hooks/Input'
-import contactSlice, { contactAdd } from '../store/contact'
+import { FaRegUser } from 'react-icons/fa'
+import { RiUserLine } from 'react-icons/ri'
+import { GiSmartphone } from 'react-icons/gi'
+import { AiOutlineMail, AiOutlineFacebook } from 'react-icons/ai'
+import { BsInstagram } from 'react-icons/bs'
+import { contactAdd } from '../store/contact'
 
 const ResumeCreate = () => {
 	const navigate = useNavigate()
@@ -19,7 +23,6 @@ const ResumeCreate = () => {
 	const instagramInput = useInput('')
 	const dispatch = useDispatch()
 
-
 	const SubmitHandler = (e) => {
 		e.preventDefault()
 		dispatch(
@@ -29,8 +32,7 @@ const ResumeCreate = () => {
 				faceBook: faceBookInput.value,
 				lastName: lastNameInput.value,
 				email: emailInput.value,
-				instagram: instagramInput.value
-				
+				instagram: instagramInput.value,
 			}),
 		)
 		// console.log(nameInput.value)
@@ -39,9 +41,9 @@ const ResumeCreate = () => {
 	return (
 		<>
 			<GlobalStyle />
-			<H1>Contact information</H1>
+			<Title>Contact information</Title>
 			<Form onSubmit={SubmitHandler}>
-				<Block>
+				<BlockLeft>
 					<label>First Name</label>
 					<div>
 						<input
@@ -49,10 +51,8 @@ const ResumeCreate = () => {
 							value={nameInput.value}
 							onChange={nameInput.onchange}
 						/>
-						<img src='https://cdn-icons-png.flaticon.com/512/1077/1077063.png' />
+						<FaRegUser fontSize='28px' color='rgb(59, 59, 59)' />
 					</div>
-
-					<br />
 					<label>Phone Number</label>
 					<div>
 						<input
@@ -60,9 +60,8 @@ const ResumeCreate = () => {
 							value={phoneInput.value}
 							onChange={phoneInput.onchange}
 						/>
-						<img src='https://cdn-icons-png.flaticon.com/128/1077/1077055.png' />
+						<GiSmartphone fontSize='40px' color='rgb(59, 59, 59)' />
 					</div>
-					<br />
 					<label>Facebook</label>
 					<div>
 						<input
@@ -70,12 +69,14 @@ const ResumeCreate = () => {
 							value={faceBookInput.value}
 							onChange={faceBookInput.onchange}
 						/>
-						<img src='https://cdn-icons-png.flaticon.com/128/1051/1051360.png' />
+						<AiOutlineFacebook
+							fontSize='38px'
+							color='rgb(59, 59, 59)'
+						/>
 					</div>
-					<br />
 					<button>Back</button>
-				</Block>
-				<BlockSecond>
+				</BlockLeft>
+				<BlockRight>
 					<label>Last Name</label>
 					<div>
 						<input
@@ -83,29 +84,31 @@ const ResumeCreate = () => {
 							value={lastNameInput.value}
 							onChange={lastNameInput.onchange}
 						/>
-						<img src='https://cdn-icons-png.flaticon.com/512/126/126486.png' />
+						<RiUserLine fontSize='30px' color='rgb(59, 59, 59)' />
 					</div>
-					<br />
 					<label>Email Address</label>
 					<div>
-						<input name='email'
-						value={emailInput.value}
-						onChange = {emailInput.onchange}
+						<input
+							name='email'
+							value={emailInput.value}
+							onChange={emailInput.onchange}
 						/>
-						<img src='https://cdn-icons-png.flaticon.com/512/684/684828.png' />
+						<AiOutlineMail
+							fontSize='30px'
+							color='rgb(59, 59, 59)'
+						/>
 					</div>
-					<br />
 					<label>Instagram</label>
 					<div>
-						<input name='instagram'
-						value={instagramInput.value}
-						onChange = {instagramInput.onchange}
-						 />
-						<img src='https://cdn-icons-png.flaticon.com/512/87/87390.png' />
+						<input
+							name='instagram'
+							value={instagramInput.value}
+							onChange={instagramInput.onchange}
+						/>
+						<BsInstagram fontSize='30px' color='rgb(59, 59, 59)' />
 					</div>
-					<br />
 					<button type='submit'>Next</button>
-				</BlockSecond>
+				</BlockRight>
 			</Form>
 		</>
 	)
@@ -118,100 +121,63 @@ body{
 	background-attachment: fixed;
 }
 `
-const H1 = styled.h1`
+const Title = styled.h1`
 	color: rgb(79, 79, 112);
 	font-size: 70px;
+	text-align: center;
 `
-
 const Form = styled.form`
 	display: flex;
 	justify-content: space-around;
 	margin: 0 auto;
-	margin-top: 80px;
-	width: 800px;
+	width: 1000px;
 	height: 500px;
 	background-color: white;
-	opacity: 0.9;
 	label {
-		color: rgb(79, 79, 112);
-	}
-`
-
-const Block = styled.div`
-	display: flex;
-	flex-direction: column;
-	margin-top: 60px;
-	margin-right: 100px;
-	width: 200px;
-	div {
-		padding: 10px;
-		width: 250px;
-		height: 35px;
-		margin: 0 0 1.2em;
-		border-radius: 4px;
-		font-size: 15px;
-		border: 2px solid #dfe1e6;
-		background-color: #fafbfc;
-		display: flex;
-	}
-	img {
-		width: 40px;
-		height: 40px;
-	}
-	input {
-		border: none;
-		outline: none;
-		height: 40px;
+		color: rgb(59, 59, 59);
+		font-size: 20px;
 	}
 	button {
 		width: 100px;
 		height: 40px;
 		background-color: rgb(79, 79, 112);
-
 		border: 2px solid #dfe1e6;
 		margin: 0 0 1.2em;
 		border-radius: 4px;
-		opacity: 0.9;
-	}
-`
-
-const BlockSecond = styled.div`
-	display: flex;
-	flex-direction: column;
-	width: 200px;
-	margin-top: 60px;
-	margin-right: 80px;
-
-	div {
-		padding: 10px;
-		width: 250px;
-		height: 35px;
-		margin: 0 0 1.2em;
-		border-radius: 4px;
-		font-size: 15px;
-		border: 2px solid #dfe1e6;
-		background-color: #fafbfc;
-		display: flex;
-	}
-	img {
-		width: 40px;
-		height: 40px;
+		color: white;
+		font-size: 18px;
 	}
 	input {
 		border: none;
 		outline: none;
+		font-size: 20px;
+		width: 380px;
 		height: 40px;
 	}
-
-	button {
-		width: 100px;
-		height: 40px;
-		/* background-color: #ff2400; */
-		background-color: rgb(79, 79, 112);
-		border: 2px solid #dfe1e6;
-		margin: 0 0 1.2em;
+`
+const BlockLeft = styled.div`
+	margin-top: 30px;
+	div {
+		padding: 10px;
+		width: 350px;
+		height: 35px;
+		margin: 0 0 3em;
 		border-radius: 4px;
-		margin-left: 170px;
-		opacity: 0.9;
+		border: 2px solid rgb(45, 45, 45);
+		display: flex;
+		align-items: center;
+	}
+`
+const BlockRight = styled.div`
+	margin-top: 30px;
+	div {
+		padding: 10px;
+		width: 350px;
+		height: 35px;
+		margin: 0 0 3em;
+		border-radius: 4px;
+		border: 2px solid rgb(45, 45, 45);
+		display: flex;
+		align-items: center;
 	}
 `
