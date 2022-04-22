@@ -31,9 +31,9 @@ const Skills = () => {
 			<SkillsList />
 
 			<Block>
-				<h1>Tell me your Skills</h1>
-
-				<img src='https://cdn-icons-png.flaticon.com/512/3095/3095221.png' />
+			
+{/* 
+				<img src='https://cdn-icons-png.flaticon.com/512/3095/3095221.png' /> */}
 				<div>
 					<input
 						value={value}
@@ -41,10 +41,12 @@ const Skills = () => {
 						onChange={(e) => setValue(e.target.value)}
 					/>
 					<button onClick={addSkillsHandler}>Add</button>
-
-					<img src='https://st2.depositphotos.com/1803840/8114/v/950/depositphotos_81143288-stock-illustration-vector-teamwork-skills-icon-of.jpg' />
+				
 				</div>
-				<button onClick={()=>navigate('decisive')} >next</button>
+				<div className='buttonDiv'>
+					<button>Back</button>
+					<button onClick={() => navigate('experience')}>next</button>
+				</div>
 			</Block>
 		</>
 	)
@@ -55,71 +57,65 @@ body{
    
     background-image: url('https://kingslanduniversity.com/wp-content/uploads/2021/02/Full-Stack-Developers.jpg');
     width: 100%;
- 
+	background-attachment: fixed;
 }
 `
 const Title = styled.h1`
 	color: rgb(79, 79, 112);
 	font-size: 70px;
+	text-align: center;
 `
 const Block = styled.div`
 	/* display: flex;
 	justify-content: space-around; */
 	margin: 0 auto;
-	/* margin-top: 80px; */
 	width: 800px;
-	height: 500px;
+	height: 400px;
 	background-color: white;
-	opacity: 0.9;
-	img {
-		width: 100px;
-		height: 100px;
-	}
+
 	div {
-		/* padding: 10px; */
+	
+		display: flex;
 		width: 650px;
 		height: 240px;
-		/* margin: 0 0 1.2em; */
-		border-radius: 6px;
-
-		margin-left: 70px;
-
-		/* font-size: 15px; */
-		border: 2px solid #dfe1e6;
-		background-color: #fafbfc;
-		img {
-			width: 200px;
-			height: 200px;
-			margin-left: 180px;
-			margin-top: 30px;
-		}
+		/* border-radius: 6px; */
+        margin-left: 70px;
+		/* border: 2px solid #dfe1e6;
+		background-color: #fafbfc; */
+	 
 		button {
-			width: 50px;
-			height: 35px;
-			background-color:rgb(255, 182, 193);
+			width: 100px;
+			/* height: 40px; */
+			background-color: rgb(79, 79, 112);
 			border: 2px solid #dfe1e6;
 			margin: 0 0 1.2em;
 			border-radius: 4px;
-			opacity: 0.9;
+			color: white;
+			height: 60px;
 		}
 	}
 	input {
-		height: 30px;
-		background-color:rgb(255, 182, 193);
-
-		border: 2px solid #dfe1e6;
-		margin: 0 0 1.2em;
-		border-radius: 5px;
-		opacity: 0.9;
-	}
-	button {
-		width: 100px;
-		height: 40px;
-		background-color: rgb(63, 159, 191);
-
-		border: 2px solid #dfe1e6;
-		margin: 0 0 1.2em;
+		padding: 10px;
+		width: 450px;
+		height: 35px;
+		margin: 0 0 3em;
 		border-radius: 4px;
-		opacity: 0.9;
+		border: 2px solid rgb(45, 45, 45);
+		display: flex;
+		align-items: center;
+	}
+	.buttonDiv {
+		display: flex;
+		justify-content: space-between;
+		button {
+			width: 100px;
+			height: 40px;
+			background-color: rgb(79, 79, 112);
+			border: 2px solid #dfe1e6;
+			margin: 0 0 1.2em;
+			border-radius: 4px;
+			color: white;
+			font-size: 18px;
+		}
 	}
 `

@@ -30,7 +30,7 @@ const Block = styled.div`
 	max-width: 750px;
 	height: 600px;
 	background-color: white;
-	opacity: 0.8;
+	opacity: 0.9;
 	border-radius: 5px;
 	margin-top: 60px;
 

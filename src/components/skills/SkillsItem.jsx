@@ -33,7 +33,7 @@ const Skills = styled.li`
     border-radius: 4px;
     margin: 5px;
 	height: 30px;
-	background-color:rgb(255, 182, 193);
+	background-color: rgb(79, 79, 112);
 	opacity: 0.9;
 	img {
 		width: 30px;
