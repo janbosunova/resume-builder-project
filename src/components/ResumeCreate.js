@@ -9,10 +9,15 @@ import { GiSmartphone } from 'react-icons/gi'
 import { AiOutlineMail, AiOutlineFacebook } from 'react-icons/ai'
 import { BsInstagram } from 'react-icons/bs'
 import { contactAdd } from '../store/contact'
+import { t } from 'i18next'
+import PhoneInput from 'react-phone-number-input'
+import 'react-phone-number-input/style.css'
+import { useState } from 'react'
 
 const ResumeCreate = () => {
 	const navigate = useNavigate()
 	const test = useSelector((state) => state.contact)
+	const [phoneValue, setPhoneValue] = useState()
 	console.log(test)
 
 	const nameInput = useInput('')
@@ -28,7 +33,7 @@ const ResumeCreate = () => {
 		dispatch(
 			contactAdd({
 				name: nameInput.value,
-				phone: phoneInput.value,
+				phone: phoneValue,
 				faceBook: faceBookInput.value,
 				lastName: lastNameInput.value,
 				email: emailInput.value,
@@ -41,29 +46,32 @@ const ResumeCreate = () => {
 	return (
 		<>
 			<GlobalStyle />
-			<Title>Contact information</Title>
+			<Title>{t('Contact information')}</Title>
 			<Form onSubmit={SubmitHandler}>
 				<BlockLeft>
-					<label>First Name</label>
-					<div>
+					<label>{t('First Name')}</label>
+					<DivName className='divName'>
 						<input
 							name='firstName'
 							value={nameInput.value}
 							onChange={nameInput.onchange}
 						/>
 						<FaRegUser fontSize='28px' color='rgb(59, 59, 59)' />
-					</div>
-					<label>Phone Number</label>
-					<div>
-						<input
+					</DivName>
+					<label>{t('Phone Number')}</label>
+
+					<DivPhone>
+						<PhoneInput
 							name='number'
-							value={phoneInput.value}
-							onChange={phoneInput.onchange}
+							defaultCountry='KG'
+							international	
+							value={phoneValue}
+							onChange={setPhoneValue}
 						/>
 						<GiSmartphone fontSize='40px' color='rgb(59, 59, 59)' />
-					</div>
-					<label>Facebook</label>
-					<div>
+					</DivPhone>
+					<label>{t('Facebook')}</label>
+					<DivFaceBook>
 						<input
 							name='faceBook'
 							value={faceBookInput.value}
@@ -73,11 +81,11 @@ const ResumeCreate = () => {
 							fontSize='38px'
 							color='rgb(59, 59, 59)'
 						/>
-					</div>
-					<button>Back</button>
+					</DivFaceBook>
+					<button onClick={() => navigate('/')}>{t('Back')}</button>
 				</BlockLeft>
 				<BlockRight>
-					<label>Last Name</label>
+					<label>{t('Last Name')}</label>
 					<div>
 						<input
 							name='lastName'
@@ -86,7 +94,7 @@ const ResumeCreate = () => {
 						/>
 						<RiUserLine fontSize='30px' color='rgb(59, 59, 59)' />
 					</div>
-					<label>Email Address</label>
+					<label>{t('Email Address')}</label>
 					<div>
 						<input
 							name='email'
@@ -98,7 +106,7 @@ const ResumeCreate = () => {
 							color='rgb(59, 59, 59)'
 						/>
 					</div>
-					<label>Instagram</label>
+					<label>{t('Instagram')}</label>
 					<div>
 						<input
 							name='instagram'
@@ -107,7 +115,7 @@ const ResumeCreate = () => {
 						/>
 						<BsInstagram fontSize='30px' color='rgb(59, 59, 59)' />
 					</div>
-					<button type='submit'>Next</button>
+					<button type='submit'>{t('Next')}</button>
 				</BlockRight>
 			</Form>
 		</>
@@ -125,6 +133,7 @@ const Title = styled.h1`
 	color: rgb(79, 79, 112);
 	font-size: 70px;
 	text-align: center;
+	margin-top: 100px;
 `
 const Form = styled.form`
 	display: flex;
@@ -138,7 +147,7 @@ const Form = styled.form`
 		font-size: 20px;
 	}
 	button {
-		width: 100px;
+		width: 115px;
 		height: 40px;
 		background-color: rgb(79, 79, 112);
 		border: 2px solid #dfe1e6;
@@ -157,16 +166,39 @@ const Form = styled.form`
 `
 const BlockLeft = styled.div`
 	margin-top: 30px;
-	div {
-		padding: 10px;
-		width: 350px;
-		height: 35px;
-		margin: 0 0 3em;
-		border-radius: 4px;
-		border: 2px solid rgb(45, 45, 45);
-		display: flex;
-		align-items: center;
-	}
+`
+const DivPhone = styled.div`
+	padding: 10px;
+	width: 350px;
+	height: 35px;
+	margin: 0 0 3em;
+	border-radius: 4px;
+	border: 2px solid rgb(45, 45, 45);
+	display: flex;
+	align-items: center;
+	input{
+			width: 280px;
+		}
+`
+const DivName = styled.div`
+	padding: 10px;
+	width: 350px;
+	height: 35px;
+	margin: 0 0 3em;
+	border-radius: 4px;
+	border: 2px solid rgb(45, 45, 45);
+	display: flex;
+	align-items: center;
+`
+const DivFaceBook = styled.div`
+	padding: 10px;
+	width: 350px;
+	height: 35px;
+	margin: 0 0 3em;
+	border-radius: 4px;
+	border: 2px solid rgb(45, 45, 45);
+	display: flex;
+	align-items: center;
 `
 const BlockRight = styled.div`
 	margin-top: 30px;
@@ -179,5 +211,6 @@ const BlockRight = styled.div`
 		border: 2px solid rgb(45, 45, 45);
 		display: flex;
 		align-items: center;
+		
 	}
 `

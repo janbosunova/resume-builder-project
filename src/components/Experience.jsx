@@ -4,6 +4,7 @@ import { useDispatch } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 import useInput from '../hooks/Input'
 import { experience } from '../store/contact'
+import { t } from 'i18next'
 const Experience = () => {
 	const dispatch = useDispatch()
 	const navigate = useNavigate()
@@ -33,11 +34,11 @@ const Experience = () => {
 	return (
 		<>
 			<GlobalStyle />
-			<Title>Experience</Title>
+			<Title>{t('Experience')}</Title>
 
 			<Form onSubmit={submitHandler}>
 				<Block>
-					<label>Job Title</label>
+					<label>{t('Job Title')}</label>
 					<div>
 						<input
 							name='Title'
@@ -47,7 +48,7 @@ const Experience = () => {
 					</div>
 
 					<br />
-					<label>Employer</label>
+					<label>{t('Employer')}</label>
 					<div>
 						<input
 							name='Employer'
@@ -56,7 +57,7 @@ const Experience = () => {
 						/>
 					</div>
 					<br />
-					<label>City</label>
+					<label>{t('City')}</label>
 					<div>
 						<input
 							name='City'
@@ -65,10 +66,10 @@ const Experience = () => {
 						/>
 					</div>
 					<br />
-					<button>Back</button>
+					<button onClick={() => navigate('/resume/education/skills')} >{t('Back')}</button>
 				</Block>
 				<BlockSecond>
-					<label>Start Date </label>
+					<label>{t('Start Date')} </label>
 					<div>
 						<input
 							name='Start Date'
@@ -78,7 +79,7 @@ const Experience = () => {
 						/>
 					</div>
 					<br />
-					<label>End Date</label>
+					<label>{t('End Date')}</label>
 					<div>
 						<input
 							name='End Date'
@@ -88,7 +89,7 @@ const Experience = () => {
 						/>
 					</div>
 					<br />
-					<label>Short Description</label>
+					<label>{t('Short Description')}</label>
 					<div>
 						<textarea
 							name='description'
@@ -97,8 +98,7 @@ const Experience = () => {
 						/>
 					</div>
 					<br />
-					{/* <button type='submit'>Next</button> */}
-					<button type='submit' >next</button>
+					<button type='submit' >{t('Next')}</button>
 				</BlockSecond>
 			</Form>
 		</>
@@ -108,8 +108,9 @@ export default Experience
 const GlobalStyle = createGlobalStyle`
 body{
    
-    background-image: url('https://www.siteimprove.com/globalassets/media/shared/page-specific/page-experience-hub/undraw_experience_design_eq3j.png?mode=crop');
+    background-image: url('https://klusdesign.eu/files/112fbfb8-c546-4e86-9936-ee4dcb45447f/JAZ%20mleczna.jpg');
     width: 100%;
+	background-attachment: fixed;
  
 }
 `
@@ -117,6 +118,7 @@ const Title = styled.h1`
 		color: rgb(79, 79, 112);
 	font-size: 70px;
 	text-align: center;
+	margin-top: 100px;
 `
 
 
@@ -128,12 +130,13 @@ const Form = styled.form`
 	height: 550px;
 	background-color: white;
 	border: 2px solid rgb(45, 45, 45);
+	box-shadow: 9px 2px 9px 2px rgb(79, 79, 112);
 	label {
 		color: rgb(59, 59, 59);
 		font-size: 20px;
 	}
 	button {
-		width: 100px;
+		width: 115px;
 		height: 40px;
 		background-color: rgb(79, 79, 112);
 		border: 2px solid #dfe1e6;
