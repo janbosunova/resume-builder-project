@@ -19,4 +19,4 @@ export const skillsSlice = createSlice({
 
 export const { addSkills, deleteSkills } = skillsSlice.actions
 
-
+// export default skillsSlice
