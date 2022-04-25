@@ -5,7 +5,7 @@ import  { skillsSlice } from "./skills";
 
 export default  configureStore({
     reducer:{
-        contact: contactSlice.reducer,
+        resume: contactSlice.reducer,
         skills: skillsSlice.reducer,
        
 

@@ -1,25 +1,32 @@
+import { useTranslation } from 'react-i18next'
 import { useNavigate } from 'react-router-dom'
 import styled from 'styled-components'
 const WelcomePage = () => {
 	const navigate = useNavigate()
+	const { t } = useTranslation()
 	return (
+	<>
+	<header>
+
+	</header>
 		<Block>
-			<h1>Welcome</h1>
+			<h1>{t('welcome')}</h1>
 			<img
 				src='https://media.istockphoto.com/vectors/summary-icon-vector-sign-and-symbol-isolated-on-white-background-vector-id1001231546'
 				alt='Resume-foto'
 			/>
 			<p>
-				Create a resume online <br /> that will bring you to your goal!
+				{t('Create a resume online')} <br />{t(' that will bring you to your goal')}!
 			</p>
 			<button onClick={() => navigate('resume')}>
-				Create Resume Online
+				{t('Create Resume Online')}
 			</button>
 		</Block>
-		
+	</>
 	)
 }
 export default WelcomePage
+
 
 const Block = styled.div`
 	margin: 0 auto;
@@ -27,18 +34,18 @@ const Block = styled.div`
 	justify-content: center;
 	flex-direction: column;
 	align-items: center;
-	max-width: 750px;
+	max-width: 950px;
 	height: 600px;
 	background-color: white;
-	opacity: 0.9;
+	/* opacity: 0.9; */
 	border-radius: 5px;
-	margin-top: 60px;
+	margin-top: 150px;
 
 	h1 {
 		font-weight: bold;
 		margin-top: 50px;
-		color: #5e6c84;
-		font-size: 50px;
+		color: rgb(79, 79, 112);
+		font-size: 60px;
 	}
 	img {
 		border: 0px;
@@ -57,6 +64,6 @@ const Block = styled.div`
 		font-weight: bold;
 		font-size: 20px;
 		color: white;
-		background: #5e6c84;
+		background: rgb(79, 79, 112);
 	}
 `

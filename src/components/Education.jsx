@@ -6,6 +6,7 @@ import useInput from '../hooks/Input'
 import { education } from '../store/contact'
 import {MdSchool} from 'react-icons/md'
 import {FaSchool} from 'react-icons/fa'
+import { t } from 'i18next'
 const Education = () => {
 	const navigate = useNavigate()
 	const dispatch = useDispatch()
@@ -39,7 +40,7 @@ const Education = () => {
 	return (
 		<>
 			<GlobalStyle />
-			<Title>Education Details</Title>
+			<Title>{t('Education Details')}</Title>
 
 			<FormBlock onSubmit={submitChangeHandler}>
 				<FormBlock1>
@@ -47,7 +48,7 @@ const Education = () => {
 						<input
 							value={schoolInput.value}
 							onChange={schoolInput.onchange}
-							placeholder='School*'
+							placeholder={t('School')}
 						/>
 							<FaSchool  fontSize='35px' color='rgb(59, 59, 59)'/>
 						
@@ -58,7 +59,7 @@ const Education = () => {
 							value={dateSchoolFinish.value}
 							onChange={dateSchoolFinish.onchange}
 							type='date'
-							placeholder='finish*'
+							placeholder={t('finish')}
 						/>
 					</div>
 
@@ -66,7 +67,7 @@ const Education = () => {
 						<input
 							value={universityInput.value}
 							onChange={universityInput.onchange}
-							placeholder='University*'
+							placeholder={t('University')}
 						/>
 						<MdSchool  fontSize='45px' color='rgb(59, 59, 59)'/>
 					</div>
@@ -76,10 +77,10 @@ const Education = () => {
 							value={dateuniversityFinish.value}
 							onChange={dateuniversityFinish.onchange}
 							type='date'
-							placeholder='finish*'
+							placeholder={t('finish')}
 						/>
 					</div>
-					<button>Back</button>
+					<button onClick={()=>navigate('/resume')}>{t('Back')}</button>
 				</FormBlock1>
 				<FormBlock2>
 					<div>
@@ -87,7 +88,7 @@ const Education = () => {
 							value={ descriptionSchool.value}
 							onChange={ descriptionSchool.onchange}
 							dateUniversityStart
-							placeholder='Description*'
+							placeholder={t('Description')}
 						/>
 						<img src='https://cdn-icons.flaticon.com/png/512/4059/premium/4059788.png?token=exp=1649896950~hmac=e44b3c1a4e510805c1074bcdc8ae2698' />
 					</div>
@@ -95,11 +96,11 @@ const Education = () => {
 						<textarea
 							value={descriptionUniversity.value}
 							onChange={descriptionUniversity.onchange}
-							placeholder='Description*'
+							placeholder={t('Description')}
 						/>
 						<img src='https://cdn-icons.flaticon.com/png/512/4059/premium/4059788.png?token=exp=1649896950~hmac=e44b3c1a4e510805c1074bcdc8ae2698' />
 					</div>
-					<button type='submit'>next</button>
+					<button type='submit'>{t('Next')}</button>
 				</FormBlock2>
 			</FormBlock>
 		</>
@@ -108,7 +109,8 @@ const Education = () => {
 export default Education
 const GlobalStyle = createGlobalStyle`
 body{
-    background-image: url('https://techrocks.ru/wp-content/uploads/2019/02/1_FGBGYSyUz0yhcjms6B_ULg.jpeg');
+    background-image: url('https://img.freepik.com/free-photo/milky-colored-silk-fabric-in-artistic-layout-texture-background-pattern_133187-1933.jpg?w=2000');
+	background-attachment: fixed;
  
 }
 `
@@ -116,6 +118,7 @@ const Title = styled.h1`
 	color: rgb(79, 79, 112);
 	font-size: 70px;
 	text-align: center;
+	margin-top: 100px;
 `
 const FormBlock = styled.form`
 	display: flex;
@@ -169,7 +172,7 @@ const FormBlock1 = styled.div`
 		}
 	}
 	button {
-		width: 100px;
+		width: 115px;
 		height: 40px;
 		background-color: rgb(79, 79, 112);
 		border: 2px solid #dfe1e6;
@@ -205,7 +208,7 @@ const FormBlock2 = styled.div`
 		margin-left: 80px;
 	}
 	button {
-		width: 100px;
+		width: 115px;
 		height: 40px;
 		background-color: rgb(79, 79, 112);
 		border: 2px solid #dfe1e6;

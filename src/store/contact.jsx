@@ -1,23 +1,31 @@
 import { createSlice } from '@reduxjs/toolkit'
-import Experience from '../components/Experience'
+
 
 const contactSlice = createSlice({
-	name: 'contact',
-	initialState: [],
+	name: 'resume',
+	initialState:  {
+		contact: {},
+		education: {},
+		experience: {},
+		skills: []
+	},
 	reducers: {
 		contactAdd: (state, action) => {
 			// console.log(action)
-			state.push(action.payload)
+			const phoneContent = action.payload.phone
+			state.contact = action.payload
+			state.contact.phone = phoneContent
+
 			
 		},
 		education:(state, action)=>{
           console.log(action)
-		  state.push(action.payload)
+		  state.education = action.payload
 
 		},
 		experience:(state, action)=>{
 			console.log(action)
-		  state.push(action.payload)
+		  state.experience = action.payload
 
 		}
 	},
