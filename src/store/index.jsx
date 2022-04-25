@@ -1,14 +1,11 @@
-import { configureStore } from "@reduxjs/toolkit";
-import contactSlice from "./contact";
+import { configureStore } from '@reduxjs/toolkit'
+import contactSlice from './contact'
 
-import  { skillsSlice } from "./skills";
+import { skillsSlice } from './skills'
 
-export default  configureStore({
-    reducer:{
-        resume: contactSlice.reducer,
-        skills: skillsSlice.reducer,
-       
-
-
-    }
+export default configureStore({
+   reducer: {
+      resume: contactSlice.reducer,
+      skills: skillsSlice.reducer,
+   },
 })

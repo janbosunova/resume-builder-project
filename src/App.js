@@ -1,13 +1,13 @@
 import { useTranslation } from 'react-i18next'
 import { Route, Routes } from 'react-router-dom'
 import './App.css'
+import styled from 'styled-components'
 import Decisive from './components/Decisive'
 import Education from './components/Education'
 import Experience from './components/Experience'
 import ResumeCreate from './components/ResumeCreate'
 import Skills from './components/skills/Skills'
 import WelcomePage from './components/WelcomePage'
-import styled from 'styled-components'
 
 const language = [
 	{
@@ -59,15 +59,13 @@ const Header = styled.header`
 	justify-content: space-between;
 	align-items: center;
 	padding: 0 10%;
-    position: fixed;
+	position: fixed;
 	top: -10px;
 
-	select{
+	select {
 		width: 70px;
-	height: 50px;
-
+		height: 50px;
 	}
-    
 
 	h1 {
 		font-size: 60px;
@@ -79,5 +77,4 @@ const Header = styled.header`
 		height: 100px;
 	}
 `
-
 export default App
